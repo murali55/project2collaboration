@@ -26,79 +26,61 @@ private String experienceReq;
 private String qualification;
 private String jobLocation;
 private Date   postedOn;
-
-
-public int getJobId() 
-{
+public int getJobId() {
 	return jobId;
 }
-public void setJobId(int jobId) 
-{
+public void setJobId(int jobId) {
 	this.jobId = jobId;
 }
-public String getJobName() 
-{
+public String getJobName() {
 	return jobName;
 }
-public void setJobName(String jobName) 
-{
+public void setJobName(String jobName) {
 	this.jobName = jobName;
 }
-public String getSkillsRequired() 
-{
+public String getSkillsRequired() {
 	return skillsRequired;
 }
-public void setSkillsRequired(String skillsRequired) 
-{
+public void setSkillsRequired(String skillsRequired) {
 	this.skillsRequired = skillsRequired;
 }
 public String getSalary() {
 	return salary;
 }
-public void setSalary(String salary) 
-{
+public void setSalary(String salary) {
 	this.salary = salary;
 }
-public String getJobDiscription() 
-{
+public String getJobDiscription() {
 	return jobDiscription;
 }
-public void setJobDiscription(String jobDiscription) 
-{
+public void setJobDiscription(String jobDiscription) {
 	this.jobDiscription = jobDiscription;
 }
-public String getExperienceReq() 
-{
+public String getExperienceReq() {
 	return experienceReq;
 }
-public void setExperienceReq(String experienceReq) 
-{
+public void setExperienceReq(String experienceReq) {
 	this.experienceReq = experienceReq;
 }
-public String getQualification() 
-{
+public String getQualification() {
 	return qualification;
 }
-public void setQualification(String qualification)
-{
+public void setQualification(String qualification) {
 	this.qualification = qualification;
 }
-public String getJobLocation() 
-{
+public String getJobLocation() {
 	return jobLocation;
 }
-public void setJobLocation(String jobLocation) 
-{
+public void setJobLocation(String jobLocation) {
 	this.jobLocation = jobLocation;
 }
-public Date getPostedOn() 
-{
+public Date getPostedOn() {
 	return postedOn;
 }
-public void setPostedOn(Date postedOn) 
-{
+public void setPostedOn(Date postedOn) {
 	this.postedOn = postedOn;
 }
+
 
 
 	

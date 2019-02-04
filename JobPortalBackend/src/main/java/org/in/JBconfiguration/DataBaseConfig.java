@@ -12,13 +12,12 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-public class DataBaseConfig 
-{
+
 	@Configuration
 	@EnableTransactionManagement
-	public class DBConfiguration 
+	public class DataBaseConfig 
 	{
-		public DBConfiguration()
+		public DataBaseConfig()
 		  {
 			 System.out.println("DBConfiguration class is instantiated"); 
 		  }
@@ -57,4 +56,4 @@ public class DataBaseConfig
 			}
 
 }
-}
+
