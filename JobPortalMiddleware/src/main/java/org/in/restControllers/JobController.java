@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class JobController
 	}
 		catch(Exception e)
 		{
-			ErrorClz errorClz= new ErrorClz(1,"job details could not inserted...Some thing went wrong"+e.getMessage());
+			ErrorClz errorClz= new ErrorClz(1,"job details could not inserted...Some thing went wrong "+e.getMessage());
 			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Job>(job,HttpStatus.OK);
@@ -60,12 +61,13 @@ public class JobController
 		}
 		catch(Exception e)
 		{
-		ErrorClz errorClz= new ErrorClz(2,"could not update.. some thing went wrong"+e.getMessage());
+		ErrorClz errorClz= new ErrorClz(2,"could not update.. some thing went wrong "+e.getMessage());
 		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Job>(job,HttpStatus.OK);
 	}
-	public ResponseEntity<?> getJob(@RequestBody int jobId)
+	@RequestMapping(value="/getjob",method=RequestMethod.GET)
+	public ResponseEntity<?> getJob(@RequestParam int jobId)
 	{
 		Job job=jobDao.getJob(jobId);
 	if(job==null)
@@ -73,6 +75,16 @@ public class JobController
 	else
 		return new ResponseEntity<Job>(job,HttpStatus.OK);
 	}
-	
-	
+	@RequestMapping(value="/deletejob",method=RequestMethod.DELETE)
+	public ResponseEntity<?> deleteJob(@RequestParam int jobId)
+	{
+		try {
+			jobDao.deleteJob(jobId);
+		}
+		catch(Exception e){
+			ErrorClz errorClz = new ErrorClz(4,"could not perform delete opration "+e.getMessage());
+		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	return new ResponseEntity<Void>(HttpStatus.OK);
+	}
 }
