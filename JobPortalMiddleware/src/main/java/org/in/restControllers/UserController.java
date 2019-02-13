@@ -1,5 +1,7 @@
 package org.in.restControllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.in.dataAccessObj.UserDao;
 import org.in.persistanceClzs.ErrorClz;
 import org.in.persistanceClzs.User;
@@ -18,17 +20,82 @@ public class UserController
 	@RequestMapping(value="/userReg",method=RequestMethod.POST)
 	public ResponseEntity<?> userRegistration(@RequestBody User user)
      {
+		System.out.println("1 " +user);
+		if(!userDao.isEmailUnique(user.getEmail())){//if email is not unique
+			System.out.println("Emailcon"+user.getEmail());
+			ErrorClz errorClz=new ErrorClz(4,"Email already exists.. pls choose different email id");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(!userDao.isPhoneNbrUnique(user.getPhoneNbr())){
+			System.out.println("phnnbr1");
+
+			ErrorClz errorClz=new ErrorClz(5,"Phone number already exists.. pls enter another phonenumber");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(user.getRole()=="" || user.getRole()==null){
+			ErrorClz errorClz=new ErrorClz(6,"Role cannot be null..");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		try
 		{
+			System.out.println("try");
+
 		userDao.userRegistration(user);
+		System.out.println("user"+user);
+
 		}catch(Exception e)
 			{
-				ErrorClz errorClz = new ErrorClz(5,"could not insert user details" + e.getMessage());
+				ErrorClz errorClz = new ErrorClz(7,"could not insert user details" + e.getMessage());
 			    return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 	    return new ResponseEntity<User>(user,HttpStatus.OK);
-		
-		
-		
 	}
+	@RequestMapping(value="/userLogin",method=RequestMethod.POST)
+	public ResponseEntity<?> login(@RequestBody User user, HttpSession session){
+		User validUser= userDao.login(user);
+		if(validUser== null){
+			ErrorClz errorClz= new ErrorClz(8,"invalid email/password ");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
+		}
+		else {
+			validUser.setOnline(true);
+            userDao.updateUser(validUser);
+            session.setAttribute("loginId", user.getEmail());
+            return new ResponseEntity<User>(validUser, HttpStatus.OK);
+		}
 }
+	@RequestMapping(value="/userLogout",method=RequestMethod.PUT)
+	public ResponseEntity<?> logout (HttpSession session)	
+	{
+	String email=(String)session.getAttribute("loginId");
+	if(email==null)
+	{
+		ErrorClz errorClz= new ErrorClz(8," please login");
+		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
+	}
+	
+		User user =userDao.getUser(email);
+	     user.setOnline(false);
+	     userDao.updateUser(user);
+	     session.removeAttribute(email);
+	     session.invalidate();
+			return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+  
+	@RequestMapping(value="/getUser",method= RequestMethod.GET)
+	public ResponseEntity<?> getUser(HttpSession session){
+		String email=(String) session.getAttribute("loginId");
+		if(email==null) {
+			ErrorClz errorClz= new ErrorClz(9,"please Login");
+			return new ResponseEntity<ErrorClz>(errorClz, HttpStatus.UNAUTHORIZED);
+		}
+		User user= userDao.getUser(email);
+		
+		
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+}	
+	
+	
+

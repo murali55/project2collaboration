@@ -82,7 +82,7 @@ public class JobController
 			jobDao.deleteJob(jobId);
 		}
 		catch(Exception e){
-			ErrorClz errorClz = new ErrorClz(4,"could not perform delete opration "+e.getMessage());
+			ErrorClz errorClz = new ErrorClz(3,"could not perform delete opration "+e.getMessage());
 		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Void>(HttpStatus.OK);

@@ -15,7 +15,7 @@ private String email;
 private String password;
 @Column(nullable=false)
 private String role;
-private String fristName;
+private String firstName;
 private String lastName;
 @Column(unique=true)
 private String phoneNbr;
@@ -40,10 +40,10 @@ public void setRole(String role) {
 	this.role = role;
 }
 public String getFristName() {
-	return fristName;
+	return firstName;
 }
-public void setFristName(String fristName) {
-	this.fristName = fristName;
+public void setFristName(String firstName) {
+	this.firstName = firstName;
 }
 public String getLastName() {
 	return lastName;

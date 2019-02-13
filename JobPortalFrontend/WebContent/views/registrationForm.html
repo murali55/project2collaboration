@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Day 001 Login Form</title>
+  
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+
+      <link rel="stylesheet" href="css/style2.css">
+
+  
+</head>
+
+<body>
+
+  <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign Up</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<input id="firstName" type="text" class="input" placeholder="FIRST NAME" ng-model="user.firstName">
+				</div>
+				<div class="group">
+					<input id="lastName" type="text" class="input" placeholder="LAST NAME" ng-model="user.lastName">
+				</div>
+				<div class="group">
+					<input id="phoneNbr" type="text" class="input" placeholder="PHONE NUMBER" ng-model="user.phoneNbr">
+				</div>
+				
+				<div class="group">
+					<input id="email" type="email" class="input" placeholder="EMAIL" ng-model="user.email">
+				</div>
+								
+				<div class="group">
+					<input id="password" type="password" class="input" data-type="PASSWORD" placeholder="PASSWORD" ng-model="user.password">
+				</div>
+				<div class="group">
+					<label for="role" class="label">role</label>
+				<select ng-model="user.role">
+				    <option value="">PLEASE CHOSE AN OPTION</option>
+					              <option value="STUDENT">Student
+					              <option value="ALUMNI">Alumni
+				               	<option value="EMPLOYEE">Employee
+				  </select>
+				  </div>
+				<div class="group">
+					<input type="submit" ng-click="userRegistration(user)"class="button" value="Sign Up">
+				</div>
+				
+				
+			</div>
+			
+			</div>
+		</div>
+	</div>
+</div>
+  
+  
+
+</body>
+
+</html>
