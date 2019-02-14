@@ -42,4 +42,8 @@
 			 console.log(response.data)	 
 		 }
 	 )}
+	 $scope.updateUserProfile=function(user){
+		 UserService.updateUserProfile(user)
+		 
+	 }
  })

@@ -1,0 +1,18 @@
+<b>Edit User Details</b><br>
+<span style="color:red">{{error.errorMessage}}</span>
+<!-- model user is from controller -->
+<form>
+<pre>
+Enter email      :<input type="email" ng-model="user.email" disabled>
+Enter password   :<input type="password" ng-model="user.password">
+Enter Firstname  :<input type="text" ng-model="user.firstName">
+Enter Lastname   :<input type="text" ng-model="user.lastName">
+Enter phonenumber:<input type="text" ng-model="user.phoneNbr">
+Select Role      :<select ng-model="user.role">
+					<option value="STUDENT">Student
+					<option value="ALUMNI">Alumni
+					<option value="EMPLOYEE">Employee
+				  </select>
+<button ng-click="updateUserProfile(user)" class="btn btn-primary">Update</button>
+</pre>
+</form>

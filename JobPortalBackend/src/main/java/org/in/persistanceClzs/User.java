@@ -39,10 +39,10 @@ public String getRole() {
 public void setRole(String role) {
 	this.role = role;
 }
-public String getFristName() {
+public String getFirstName() {
 	return firstName;
 }
-public void setFristName(String firstName) {
+public void setFirstName(String firstName) {
 	this.firstName = firstName;
 }
 public String getLastName() {

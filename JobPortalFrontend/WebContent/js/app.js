@@ -8,6 +8,7 @@ app.config(function($routeProvider){
 	.when('/getalljobs',{controller:'JobCtrl',templateUrl:'views/joblist.html'})
 	.when('/registration',{controller:'UserCtrl',templateUrl:'views/registrationForm.html'})
 	.when('/userLogin',{controller:'UserCtrl',templateUrl:'views/loginForm.html'})
+	.when('/updateuser',{controller:'UserCtrl',templateUrl:'views/updateUserDetails.html'})
 	.otherwise({templateUrl:'views/home.html'})
 	
 })
