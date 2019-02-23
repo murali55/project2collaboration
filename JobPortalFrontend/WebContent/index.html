@@ -1,43 +1,14 @@
-<!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body ng-app="app"><!-- bootstrap an angular module 'app' -->
-<div class="container">
-<nav class="navbar navbar-inverse" >
-<div  class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" 
-   data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-</div>
-<div class="collapse navbar-collapse" id="collapse-example">
 
-<ul class="nav navbar-nav" >
-<li><a href="#/addjob" ng-show="user.role=='ADMIN'">Add Job</a></li>
-<li><a href="#/getalljobs" ng-show="user!=undefined">Get All Jobs</a></li>
-<li><a href="#/registration" ng-show="user==undefined">Sign Up</a></li>
-<li><a href="" ng-show="user!=undefined">{{user.firstName}}&nbsp;{{user.lastName}}</a></li>
-<li><a href="#/userLogin" ng-show="user==undefined">SignIn</a></li>
-<li><a href="#/updateuser" ng-show="user!=undefined">Edit Profile</a></li>
-<li><a href="" ng-click="userlogout()" ng-show="user!=undefined">SignOut</a></li>
-</ul>
-</div>
-</nav>
-</div>
-<div class="container">
-<!-- content of partial views will get added here -->
-<div ng-view></div>
-</div>
-</body>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>jobPortal</title>
+ <link rel="stylesheet" href="css/style3.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
@@ -46,4 +17,70 @@
 <script type="text/javascript" src="JSservices/jobservice.js"></script>
 <script type="text/javascript" src="JScontrollers/usercontroller.js"></script>
 <script type="text/javascript" src="JSservices/userservice.js"></script>
+<script type="text/javascript" src="JScontrollers/blogcontroller.js"></script>
+<script type="text/javascript" src="JSservices/blogservice.js"></script>
+<script type="text/javascript" src="script/nav.js"></script>
+
+</head>
+<body ng-app="app">
+     <!-----navBar--->
+<section id="nav-bar" class="sticky">
+  <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#"><img src="img/job.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#/addjob" ng-show="user.role=='ADMIN'">ADD JOB</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#/getalljobs" ng-show="user!=undefined">GET ALL JOBS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href=""ng-show="user!=undefined">{{user.firstName}}&nbsp;{{user.lastName}}</a>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-show="user!=undefined">
+          BLOG
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#/addblog" ng-show="user!=undefined">ADD BLOG</a>
+          <a class="dropdown-item" href="#/blogsapproved" ng-show="user!=undefined">BROWSE BLOGS</a>
+          <a class="dropdown-item" href="#/blogswaiting" ng-show="user.role=='ADMIN'">BLOGS WAITING</a>
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="" ng-click="userlogout()" ng-show="user!=undefined">SIGN-OUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#/registration" ng-show="user==undefined">SIGN-UP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#/userLogin" ng-show="user==undefined">SIGN-IN</a>
+      </li>
+     
+    </ul>
+    
+  </div>
+</nav>
+</section>
+
+<div class="container">
+<!-- content of partial views will get added here -->
+<div ng-view></div>
+</div>
+<section>
+  <div class="outer-div">
+    <div class="inner-div" style="background-image:url(img/home1.jpg)"></div>
+</div>
+</section>
+
+</body>
 </html>

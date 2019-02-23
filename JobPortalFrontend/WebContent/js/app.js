@@ -9,6 +9,10 @@ app.config(function($routeProvider){
 	.when('/registration',{controller:'UserCtrl',templateUrl:'views/registrationForm.html'})
 	.when('/userLogin',{controller:'UserCtrl',templateUrl:'views/loginForm.html'})
 	.when('/updateuser',{controller:'UserCtrl',templateUrl:'views/updateUserDetails.html'})
+    .when('/addblog',{controller:'BlogCtrl',templateUrl:'views/blogForm.html'})
+	.when('/blogsapproved',{controller:'BlogCtrl',templateUrl:'views/blogsApprovedForm.html'})
+	.when('/blogswaiting',{controller:'BlogCtrl',templateUrl:'views/blogsWaitingForm.html'})
+
 	.otherwise({templateUrl:'views/home.html'})
 	
 })

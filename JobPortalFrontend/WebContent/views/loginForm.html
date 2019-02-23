@@ -4,51 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Day 001 Login Form</title>
-  
-  
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
-
-      <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/style.css">
 
   
 </head>
 
 <body>
+<div class=back>
+  <div class="login-box">
+  
+  <h1>User login</h1>
+  <img src="img/login.png" class="login">
+    <span style="color:red">{{error.errorMessage}}</span>
+  
+  <form>
+  <p>email</p>
+  <input type="text" name="email" placeholder="Enter email" ng-model="user.email">
+  <p>password</p>
+  <input type="password" name="password" placeholder="Enter password" ng-model="user.password">
+  <input type="submit" value="login" ng-click="login(user)">
+    <a href="#/registration">Don't have an account?</a>
+    <a href="#">HOME</a>
+  
+  </form>
+  </div>
 
-  <div class="login-wrap">
-	<div class="login-html">
-	  <span style="color:red">{{error.errorMessage}}</span>
-	
-		<input id="tab-1" type="radio" name="ta" class="sign-in" checked>
-		<label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-				<div class="group">
-					<label for="email" class="label">Username</label>
-					<input id="email" type="email" class="input" ng-model="user.email">
-				</div>
-				<div class="group">
-					<label for="password" class="label">Password</label>
-					<input id="password" type="password" class="input" data-type="PASSWORD" ng-model="user.password">
-				</div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div>
-				<div class="group">
-					<input type="submit" ng-click="login(user)" class="button"  value="Sign In">
-				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<a href="#/registration">Forgot Password?</a>
-				</div>
-			</div>
-			
-		</div>
-	</div>
 </div>
-
 </body>
 
 </html>

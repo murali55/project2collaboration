@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+/*----navBar----*/
+#nav-bar{
+ position:fixed;
+ top:0;
+ width:100%;
+ z-index: 15;
+ 
+}
+#nav-bar.sticky {
+background-color: rgba(132, 129, 132, 0.63);
+position: fixed;
+}
+
+.navbar-brand img
+{
+	width:70px;
+  height: 50px;
+  padding-left: 15px;
+  transition: all 0.9s ease 0s;
+}
+
+.navbar-nav li
+{
+  padding: 0 8px;
+}
+.navbar-nav li a
+{
+  float: right;
+  text-align: left;
+  transition:0.7s;
+}
+.sticky .navbar-nav li a
+{
+	padding:10px 15px;
+	color:black!important;
+}
+#nav-bar ul li a:hover
+{
+   color: #3CB371!important;
+}
+.navbar
+{
+  background: :#fff;
+}
+.navbar-toggler{
+  border: none!important;
+
+}
+.navbar-toggler-icon{
+  background-color: #3CB371!important;
+  border-color: red!important;
+
+}
+.nav-link{
+  color: #DCDCDC!important;
+  font-weight: 650;
+  font-size: 16px;
+}
+.inner-div{
+	width:100%;
+	background-size:cover;
+  background-position: center;
+  height: 100vh;
+}
+.inner-div:before
+{
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	heght:400px;
+	background: linear-gradient(red);
+	pointer-events:none;
+}
+.inner-div:before {
+top: 0;
+height: 200px;
+width: 100%;
+background: linear-gradient(#000,transparent);
+}
+.inner-div:after {
+pointer-events: none;
+content: '';
+bottom: 0;
+background: linear-gradient(360deg,#000,transparent);
+width: 100%;
+height: 400px;
+position: absolute;
+}
+li{
+	padding-bottom: 30px;
+}
+ 
+ /*--- home----*/ 
+ .home-bg{
+ position: absolute;
+	top:100%;
+	right:0;
+	left:0;
+	background-color:black;
+	height:800px
+ }
+ .headerText h2{
+   text-align: center;
+   color: #ff2600;
+   margin-left: 0;
+   margin-top:60%;
+   padding-left: 50%;
+   font-weight: bold;
+   text-transform: uppercase;
+   font-size: 80px;
+   
+    
+ 
+ }
+.col img{
+	top:0;
+	left:0;
+	margin-top:50%;
+	width:80%;
+	height:500eh;
+    margin-left: 50px;
+	transform:translate(-50%, -50%);
+
+}
+ 
+ .home-bg1{
+ position: absolute;
+	top:100%;
+	right:0;
+	left:0;
+	background-image:url("../img/background-black-colors-952670.jpg");
+	height:800px;
+	background-size: cover;
+	background-position: center;
+	
+ }
+ .home-bg1:before {
+background: linear-gradient(#000,transparent);
+height: 400px;
+top: 0;
+width: 100%;
+position: absolute;
+content: '';
+}
+ 
+ 
