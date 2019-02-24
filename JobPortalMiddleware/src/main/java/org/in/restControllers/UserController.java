@@ -95,7 +95,7 @@ public class UserController
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	@RequestMapping(value="/updateuser", method=RequestMethod.PUT )
-	public ResponseEntity<?> updateUser(User user, HttpSession session){
+	public ResponseEntity<?> updateUser(@RequestBody User user, HttpSession session){
 	String email=(String)session.getAttribute("loginId");
 		
 	if(email==null) {

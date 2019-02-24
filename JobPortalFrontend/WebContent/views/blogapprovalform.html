@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- result of the query select * from blogpost where blogpostid=? -->
+<div class="panel panel-primary">
+<div class="panel-heading">
+<b>Blog Title:</b>{{blog.blogTitle}}<br>
+<b>Posted On :</b> {{blog.postedOn | date:'dd-MMM-yyyy :hh:mm:ss'}}<br>
+<b>Author    :</b>{{blog.author.email}}<br>
+</div>
+<div class=panel-body>
+<div>
+<p ng-bind-html="content"></p><br>
+</div>
+<button class="btn btn-primary" ng-click="approveBlog(blog)">Approve</button> &nbsp; <!-- update blogpost set approved=true where blogpostid=? -->
+<button class="btn btn-danger" ng-click="rejectBlog(blog)">Reject</button> <!-- delete from blogpost where blogpostid=? -->
+</div>
+</div>
+</body>
+</html>

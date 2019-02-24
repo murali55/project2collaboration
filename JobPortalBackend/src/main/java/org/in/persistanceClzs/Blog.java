@@ -18,7 +18,7 @@ public class Blog {
 @GeneratedValue(strategy=GenerationType.AUTO)
 private int blogId;
 @Column(nullable=false)
-private String blogTittle;
+private String blogTitle;
 @Lob
 private String blogContent;
 @ManyToOne
@@ -32,11 +32,11 @@ public int getBlogId() {
 public void setBlogId(int blogId) {
 	this.blogId = blogId;
 }
-public String getBlogTittle() {
-	return blogTittle;
+public String getBlogTitle() {
+	return blogTitle;
 }
-public void setBlogTittle(String blogTittle) {
-	this.blogTittle = blogTittle;
+public void setBlogTitle(String blogTitle) {
+	this.blogTitle = blogTitle;
 }
 public String getBlogContent() {
 	return blogContent;

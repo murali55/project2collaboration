@@ -6,11 +6,11 @@
 		</div>
 		<div class="panel-body">
 			<ul>
-				<li ng-repeat="blogPost in blogsApproved">
+				<li ng-repeat="blog in blogsApproved">
 					<!-- approved value as true --> 
-					Blog Title : {{blog.blogTittle}}<br>
+					<a href="#/getblogapproved/{{blog.blogId}}"> Blog Title : {{blog.blogTitle}}</a><br>
 					Posted On : {{blog.postedOn | date:'dd-MMM-yyyy hh:mm:ss'}}<br>
-					Author :{{blog.author}}<br>
+					Author :{{blog.author.email}}<br>
 					<hr>
 				</li>
 			</ul>

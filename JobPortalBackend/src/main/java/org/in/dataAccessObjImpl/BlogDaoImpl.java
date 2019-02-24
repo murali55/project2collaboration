@@ -34,4 +34,20 @@ private SessionFactory sessionFactory;
 		return blogsWaitingForApproval;
 	}
 
+	public Blog getBlog(int blogId) {
+		Session session =sessionFactory.getCurrentSession();
+        Blog blog=(Blog) session.get(Blog.class, blogId);
+		return blog;
+	}
+
+	public void approveBlog(Blog blog) {
+        Session session= sessionFactory.getCurrentSession();
+        session.update(blog);
+	}
+
+	public void rejectBlog(Blog blog) {
+		Session session= sessionFactory.getCurrentSession();
+		session.delete(blog);
+	}
+
 }

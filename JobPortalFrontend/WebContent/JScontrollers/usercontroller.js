@@ -43,7 +43,16 @@
 		 }
 	 )}
 	 $scope.updateUserProfile=function(user){
-		 UserService.updateUserProfile(user)
-		 
+		 UserService.updateUserProfile(user).then(
+                 function(response){
+		  		      $location.path('/profile')  
+ 
+                   },
+                   function(response){
+                       console.log(response.status)
+		  		    	 console.log(response.data)
+		  		    	  $scope.error=response.data
+		  		      }
+		 )
 	 }
  })

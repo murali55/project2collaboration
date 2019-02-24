@@ -3,9 +3,13 @@ package org.in.restControllers;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.in.dataAccessObj.JobDao;
+import org.in.dataAccessObj.UserDao;
 import org.in.persistanceClzs.ErrorClz;
 import org.in.persistanceClzs.Job;
+import org.in.persistanceClzs.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -27,17 +31,30 @@ public class JobController
 	}
 	@Autowired
  private JobDao jobDao;	
+	@Autowired
+ private UserDao userDao;	
 	
 	@RequestMapping(value="/addjob",method=RequestMethod.POST)
-	public ResponseEntity<?>  addJob(@RequestBody Job job) 
+	public ResponseEntity<?>  addJob(@RequestBody Job job, HttpSession session) 
 	{
+		String email=(String)session.getAttribute("loginId");
+		if(email==null) {
+			ErrorClz errorClz= new ErrorClz(1,"please login ");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);	
+		}
+	   User user = userDao.getUser(email);
+		if(!user.getRole().equals("ADMIN")) {
+			ErrorClz errorClz= new ErrorClz(1," you are not an authenticated user");
+			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);	
+		
+		}
 		try {
 		job.setPostedOn(new Date());
 		jobDao.addJob(job);
 	}
 		catch(Exception e)
 		{
-			ErrorClz errorClz= new ErrorClz(1,"job details could not inserted...Some thing went wrong "+e.getMessage());
+			ErrorClz errorClz= new ErrorClz(2,"job details could not inserted...Some thing went wrong "+e.getMessage());
 			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Job>(job,HttpStatus.OK);
@@ -61,7 +78,7 @@ public class JobController
 		}
 		catch(Exception e)
 		{
-		ErrorClz errorClz= new ErrorClz(2,"could not update.. some thing went wrong "+e.getMessage());
+		ErrorClz errorClz= new ErrorClz(3,"could not update.. some thing went wrong "+e.getMessage());
 		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Job>(job,HttpStatus.OK);
@@ -82,7 +99,7 @@ public class JobController
 			jobDao.deleteJob(jobId);
 		}
 		catch(Exception e){
-			ErrorClz errorClz = new ErrorClz(3,"could not perform delete opration "+e.getMessage());
+			ErrorClz errorClz = new ErrorClz(4,"could not perform delete opration "+e.getMessage());
 		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Void>(HttpStatus.OK);

@@ -66,32 +66,8 @@ position: fixed;
   background-position: center;
   height: 100vh;
 }
-.inner-div:before
-{
-	content:'';
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	heght:400px;
-	background: linear-gradient(red);
-	pointer-events:none;
-}
-.inner-div:before {
-top: 0;
-height: 200px;
-width: 100%;
-background: linear-gradient(#000,transparent);
-}
-.inner-div:after {
-pointer-events: none;
-content: '';
-bottom: 0;
-background: linear-gradient(360deg,#000,transparent);
-width: 100%;
-height: 400px;
-position: absolute;
-}
+
+
 li{
 	padding-bottom: 30px;
 }
@@ -140,6 +116,36 @@ li{
 	background-position: center;
 	
  }
+ .page1{
+ position: absolute;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	background-image:url("../img/home1.jpg");
+	height:800px;
+	background-size: cover;
+	background-position: center;
+ }
+ .page1:before {
+	content:'';
+	position:absolute;
+top: 0;
+height: 400px;
+width: 100%;
+background: linear-gradient(#000,transparent);
+	pointer-events:none;
+
+}
+.page1:after {
+pointer-events: none;
+content: '';
+bottom: 0;
+background: linear-gradient(360deg,#000,transparent);
+width: 100%;
+height: 100px;
+position: absolute;
+}
  .home-bg1:before {
 background: linear-gradient(#000,transparent);
 height: 400px;

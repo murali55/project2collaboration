@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<b>Edit User Details</b><br>
+<span style="color:red">{{error.errorMessage}}</span>
+<!-- model user is from controller -->
+<form>
+<pre>
+Enter email      :{{user.email}}
+Enter password   :{{user.password}}
+Enter Firstname  :{{user.firstName}}
+Enter Lastname   :{{user.lastName}}
+Enter phonenumber:{{user.phoneNbr}}
+Select Role      :{{user.role}}
+<a href="#/updateuser">EDIT</a>
+
+</pre>
+</form>
+</body>
+</html>

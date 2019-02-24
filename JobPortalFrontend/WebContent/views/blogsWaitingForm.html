@@ -2,7 +2,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="css/blog.css">
  </head>
- <body>
+ <body class="middle">
 <b ng-show="user.role!='ADMIN'">You are not authorized to view blogs waiting for approval</b>
 <div ng-show="user.role=='ADMIN'">
 <div class="pan-b" >
@@ -11,10 +11,10 @@
 </div>
 <ul style="list-style:none">
 <li ng-repeat="blog in blogsWaiting"><!-- approved is false -->
-<a><b>Blog Title : {{blog.blogTittle}}</b></a><br>
+<a href="#/getblogwaitingforapproval/{{blog.blogId}}"><b> Blog Title : {{blog.blogTitle}}</b></a><br>
 Posted On  : {{blog.postedOn | date:'dd-MMM-yyyy hh:mm:ss'}}<br>
 Author's Email     :{{blog.author.email}}<br>
-Posted By  : {{blog.author.firstname}} &nbsp; {{blog.author.lastname}}<br>
+Posted By  : {{blog.author.firstName}} &nbsp; {{blog.author.lastName}}<br>
 
 </li>
 </ul>

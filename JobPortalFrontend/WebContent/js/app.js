@@ -8,11 +8,13 @@ app.config(function($routeProvider){
 	.when('/getalljobs',{controller:'JobCtrl',templateUrl:'views/joblist.html'})
 	.when('/registration',{controller:'UserCtrl',templateUrl:'views/registrationForm.html'})
 	.when('/userLogin',{controller:'UserCtrl',templateUrl:'views/loginForm.html'})
+	.when('/profile',{controller:'UserCtrl',templateUrl:'views/viewprofile.html'})
 	.when('/updateuser',{controller:'UserCtrl',templateUrl:'views/updateUserDetails.html'})
     .when('/addblog',{controller:'BlogCtrl',templateUrl:'views/blogForm.html'})
 	.when('/blogsapproved',{controller:'BlogCtrl',templateUrl:'views/blogsApprovedForm.html'})
 	.when('/blogswaiting',{controller:'BlogCtrl',templateUrl:'views/blogsWaitingForm.html'})
-
+    .when('/getblogwaitingforapproval/:blogId',{controller:'BlogIndetailCtrl', templateUrl:'views/blogapprovalform.html'})
+    .when('/getblogapproved/:blogId',{controller:'BlogIndetailCtrl',templateUrl:'views/blogindetail.html'})
 	.otherwise({templateUrl:'views/home.html'})
 	
 })

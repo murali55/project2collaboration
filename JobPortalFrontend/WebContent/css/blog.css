@@ -96,15 +96,33 @@ textarea{
 /*----blogsWating----*/
 
 body{
-	z-index:12;
-background-image:url("../img/home2.jpg");
+background-image:url("../img/blogpic.jpg");
   background-attachment: fixed;
   background-size: cover;
   
-}	
+}
+.middle{	
+width:100%;
+	height:100%;
+	background-color: black;
+    opacity: 0;
+	position: absolute;
+	top:0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
 .pan-b{
-	margin:0;
-	padding:0;
-	width:100%;
-	background-color: rgba(133,588,0,0.30);
+	margin-top:100px;
+	margin-bottom:0;
+	padding-top:90px;
+text-align:center;	
+	margin-left:50%;
+	margin-right:50%;
+	width: 600px;
+	color: #fff;
+	transform:translate(-50%, -0%);
+	box-sizing: border-box;
+	background-color:rgba(0,0,0,0.3);
+
 	}

@@ -19,6 +19,7 @@
 <script type="text/javascript" src="JSservices/userservice.js"></script>
 <script type="text/javascript" src="JScontrollers/blogcontroller.js"></script>
 <script type="text/javascript" src="JSservices/blogservice.js"></script>
+<script type="text/javascript" src="JScontrollers/blogindetailcontroller.js"></script>
 <script type="text/javascript" src="script/nav.js"></script>
 
 </head>
@@ -44,7 +45,7 @@
         <a class="nav-link " href="#/getalljobs" ng-show="user!=undefined">GET ALL JOBS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href=""ng-show="user!=undefined">{{user.firstName}}&nbsp;{{user.lastName}}</a>
+        <a class="nav-link " href="#/profile"ng-show="user!=undefined">{{user.firstName}}&nbsp;{{user.lastName}}</a>
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-show="user!=undefined">
@@ -76,11 +77,6 @@
 <!-- content of partial views will get added here -->
 <div ng-view></div>
 </div>
-<section>
-  <div class="outer-div">
-    <div class="inner-div" style="background-image:url(img/home1.jpg)"></div>
-</div>
-</section>
 
 </body>
 </html>
