@@ -15,8 +15,9 @@ app.config(function($routeProvider){
 	.when('/blogswaiting',{controller:'BlogCtrl',templateUrl:'views/blogsWaitingForm.html'})
     .when('/getblogwaitingforapproval/:blogId',{controller:'BlogIndetailCtrl', templateUrl:'views/blogapprovalform.html'})
     .when('/getblogapproved/:blogId',{controller:'BlogIndetailCtrl',templateUrl:'views/blogindetail.html'})
-	.otherwise({templateUrl:'views/home.html'})
-	
+    .when('/home',{controller:'NotificationCtrl',templateUrl:'views/home.html'})
+	.when('/getnotification/:notificationId',{controller:'NotificationCtrl',templateUrl:'views/notificationindetail.html'})
+	.otherwise({controller:'NotificationCtrl',templateUrl:'views/home.html'})	
 })
 app.run(function($rootScope, UserService, $location,$cookieStore){
 	if($rootScope.user==undefined)

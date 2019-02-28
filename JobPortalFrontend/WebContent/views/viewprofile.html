@@ -3,22 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
-<b>Edit User Details</b><br>
-<span style="color:red">{{error.errorMessage}}</span>
-<!-- model user is from controller -->
-<form>
-<pre>
-Enter email      :{{user.email}}
-Enter password   :{{user.password}}
-Enter Firstname  :{{user.firstName}}
-Enter Lastname   :{{user.lastName}}
-Enter phonenumber:{{user.phoneNbr}}
-Select Role      :{{user.role}}
-<a href="#/updateuser">EDIT</a>
-
-</pre>
-</form>
+<div class= "div-back">
+<div class="div-front">
+<div class="div1">
+    
+    <div class="img">
+        <img src="img/icon.png">
+    </div>
+    <div class="divIn">
+        {{user.firstName}}&nbsp;{{user.lastName}}
+    </div>
+</div>
+<h1> User Details</h1>
+    <div class="div2">
+     <p>Enter email       :{{user.email}}</p>
+     <p>Enter password    :{{user.password}}</p>
+     <p>Enter phonenumber :{{user.phoneNbr}}</p>
+     <p> Role             :{{user.role}}</p>
+     <a href="#/updateuser">EDIT</a>
+    </div>
+</div>
+</div>
 </body>
 </html>

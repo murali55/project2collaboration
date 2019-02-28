@@ -28,7 +28,20 @@ app.factory('BlogService',function($http){
 	blogService.rejectBlog=function(blog){
 		return $http.put(BASE_URL + "/rejectblog",blog)
 	}
+	blogService.hasUserLikedBlog=function(blogId){
+		return $http.get(BASE_URL + "/hasuserlikedblog/"+blogId)
+	}
 	
+	blogService.updateLikes=function(blogId){
+		return $http.put(BASE_URL + "/updatelikes/"+blogId)
+	}
+	
+	blogService.addBlogComment=function(blogComment){
+		return $http.post(BASE_URL + "/addblogcomment",blogComment)
+	}
+	blogService.getAllBlogComments=function(blogId){
+		return $http.get(BASE_URL + "/getblogcomments/"+blogId);
+	}
 	
 	return blogService;
 })

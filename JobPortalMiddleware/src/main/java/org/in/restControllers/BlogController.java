@@ -6,9 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.in.dataAccessObj.BlogDao;
+import org.in.dataAccessObj.NotificationDao;
 import org.in.dataAccessObj.UserDao;
 import org.in.persistanceClzs.Blog;
 import org.in.persistanceClzs.ErrorClz;
+import org.in.persistanceClzs.Notification;
 import org.in.persistanceClzs.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,10 @@ public class BlogController {
 private BlogDao blogDao;
 @Autowired
 private UserDao userDao;
+@Autowired
+private NotificationDao notificationDao;
+
+
 @RequestMapping(value="/addBlog", method=RequestMethod.POST)
 ResponseEntity<?> addBlog(@RequestBody Blog blog, HttpSession session){
 String email=(String)session.getAttribute("loginId");
@@ -79,7 +85,6 @@ ResponseEntity<?> getWaitingForApproval(HttpSession session){
 
    @RequestMapping(value="/getblog/{blogId}")
    public ResponseEntity<?> getBlog(HttpSession session,@PathVariable int blogId){
-	//CHECK FOR AUTHENTICATION
 	String email=(String)session.getAttribute("loginId");
 	if(email==null){
 		ErrorClz errorClz=new ErrorClz(5,"Please login..");
@@ -90,16 +95,14 @@ ResponseEntity<?> getWaitingForApproval(HttpSession session){
    }
    @RequestMapping(value="/approveblog",method=RequestMethod.PUT)
    public ResponseEntity<?> approveBlog(HttpSession session,@RequestBody Blog blog){
-   	//CHECK FOR AUTHENTICATION
    		String email=(String)session.getAttribute("loginId");
    		if(email==null){
-   			ErrorClz errorClz=new ErrorClz(5,"Please login..");//login.html
+   			ErrorClz errorClz=new ErrorClz(5,"Please login..");
    			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
    		}
-   		//CHECK FOR AUTHORIZATION
-   		//CHECK IF THE REQUEST FROM ADMIN (LOGGED IN USER IS ADMIN)
+   		
    		User user=userDao.getUser(email);
-   		if(!user.getRole().equals("ADMIN")){//Display the error message in the blogswaitingforapproval.html
+   		if(!user.getRole().equals("ADMIN")){
    			ErrorClz errorClz=
    				new ErrorClz(7,"Access Denied.. You are not authorized to view the blogs waiting for approval");
    			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
@@ -109,26 +112,28 @@ ResponseEntity<?> getWaitingForApproval(HttpSession session){
    		return new ResponseEntity<Void>(HttpStatus.OK);
    }
    @RequestMapping(value="/rejectblog",method=RequestMethod.PUT)
-   public ResponseEntity<?> rejectBlog(HttpSession session,@RequestBody Blog blog){
-   	//CHECK FOR AUTHENTICATION
+   public ResponseEntity<?> rejectBlog(HttpSession session,@RequestBody Blog blog, @PathVariable String rejectionReason){
    		String email=(String)session.getAttribute("loginId");
    		if(email==null){
-   			ErrorClz errorClz=new ErrorClz(5,"Please login..");//login.html
+   			ErrorClz errorClz=new ErrorClz(5,"Please login..");
    			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
    		}
-   		//CHECK FOR AUTHORIZATION
-   		//CHECK IF THE REQUEST FROM ADMIN (LOGGED IN USER IS ADMIN)
    		User user=userDao.getUser(email);
-   		if(!user.getRole().equals("ADMIN")){//Display the error message in the blogswaitingforapproval.html
+   		if(!user.getRole().equals("ADMIN")){
    			ErrorClz errorClz=
    				new ErrorClz(7,"Access Denied.. You are not authorized to view the blogs waiting for approval");
    			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
    		}
-   		blogDao.rejectBlog(blog);
-   		return new ResponseEntity<Void>(HttpStatus.OK);
+   		
+   Notification notification=new Notification();
+   notification.setApprovedOrRejected("Rejected");
+   notification.setBlogTitle(blog.getBlogTitle());
+	notification.setUserToBeNotified(blog.getAuthor());
+	notification.setRejectionReason(rejectionReason);
+	notificationDao.addNotification(notification);
+	blogDao.rejectBlog(blog);
+	return new ResponseEntity<Void>(HttpStatus.OK);
+
    }
-
-
-   
 }
 
