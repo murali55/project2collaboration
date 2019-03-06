@@ -26,7 +26,7 @@ private SessionFactory sessionFactory;
 				"from Notification where viewed=:viewed and userToBeNotified.email=:email");
 		query.setBoolean("viewed", false);
 		query.setString("email", email);
-		List<Notification> notificationsNotViewed=query.list();
+		List<Notification> notificationsNotViewed= query.list();
 		return notificationsNotViewed;
 	}
 
