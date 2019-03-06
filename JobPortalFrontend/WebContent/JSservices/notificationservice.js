@@ -3,7 +3,7 @@
  */
 app.factory('NotificationService',function($http){
 	var notificationService={}
-	var BASE_URL ="http://localhost:9090/project2middleware"
+	var BASE_URL ="http://localhost:8080/JobPortalMiddleware"
 		
 	notificationService.getNotificationsNotViewed=function(){
 		return $http.get(BASE_URL + "/getnotificationsnotviewed")

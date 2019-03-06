@@ -13,8 +13,8 @@
 }
 .navbar-brand img{
 	top:0;
-	height:43px;
-	width:40px;
+	height:58px;
+	width:50px;
 	transition: all 0.9s ease 0s;
 	margin-top: -10px;
 }
@@ -41,7 +41,7 @@
  .navbar-nav li a
 {  
 	text-align: left;
-	padding:20px 15px;
+	padding:27px 15px;
 	color:white!important;
 	font-weight: bold;
 }
@@ -55,11 +55,12 @@
 }
 .dropdown-menu li a:hover{
    color:green!important;
-	
+background-color: transparent!important;	
 } 
 nav#fix-nav.navbar-inverse.scrolled{
 	
-	background:#0e0c0d73 !important;
+    background: rgba(70, 83, 86, 0.67) !important;
+    height: 80px;
 	
 }
  .navbar-toggle {

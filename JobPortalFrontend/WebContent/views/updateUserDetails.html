@@ -1,8 +1,10 @@
+ <link rel="stylesheet" href="css/profile.css">
+
 <b>Edit User Details</b><br>
 <span style="color:red">{{error.errorMessage}}</span>
 <!-- model user is from controller -->
-<form>
-<pre>
+<form id="upback">
+<div>
 Enter email      :<input type="email" ng-model="user.email" disabled>
 Enter password   :<input type="password" ng-model="user.password">
 Enter Firstname  :<input type="text" ng-model="user.firstName">
@@ -14,5 +16,5 @@ Select Role      :<select ng-model="user.role">
 					<option value="EMPLOYEE">Employee
 				  </select>
 <button ng-click="updateUserProfile(user)" class="btn btn-primary">Update</button>
-</pre>
+<div>
 </form>

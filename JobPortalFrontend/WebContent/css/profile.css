@@ -23,16 +23,43 @@
 	transform:translate(-50%, -50%);
 	text-align: center;
 }
+.divIn{
+	text-transform: uppercase;
+}
+
 h1{
 	text-transform: uppercase;
-	font-size: 35px;
+	font-size: 30px;
 	margin-top: 30px;	
+	color: blue;
+}
+ div a{
+ font-weight: bold;	
 }
 
 .img{
 }
 
 
+
+
+/*-----UPDATE USER------*/
+form{
+	padding: 147px;
+	position: absolute;
+}
+pre {
+    display: block;
+    padding: 40px 250px 40px 250px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #eff0f7;
+    border: 2px solid #ccc;
+    border-radius: 7px;
+}
 
 
 

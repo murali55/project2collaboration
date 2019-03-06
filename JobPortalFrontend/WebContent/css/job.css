@@ -88,14 +88,19 @@ button{
 	text-transform: uppercase;
 	margin-left: 28%;
 }
+
+
+
+
 /*---jobList--*/
 body{
 	background-image:url("../img/jobpic.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
+
 .panel-main{
-	margin-top:100px;
+	margin-top:10px;
 	margin-bottom:0;
 	padding-top:90px;
 text-align:center;	
@@ -105,15 +110,30 @@ text-align:center;
 	color: #fff;
 	transform:translate(-50%, -0%);
 	box-sizing: border-box;
-	background-color:rgba(0,0,0,0.3);
-
+	background-color:rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 10px 3px whitesmoke;
+		
 }
-	
+.middle{
+	position:absolute;
+	background-color:rgba(0,0,0,0.7);
+	top:0;
+	left: 0;
+	right: 0;
+}
+.panel-heading {
+    text-transform: uppercase;
+    text-align: -webkit-center;
+    margin-top:90px;
+    margin-bottom:0;
+    color: white;
+}	
 }
 #show{
 	border-bottom: 2px solid #fff;
-	background-color: blue;
+	background-color: #00fcff;
 }
 li{
 	padding-bottom: 15px;
+	
 }

@@ -13,12 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RestController;
+@RestController
 public class NotificationController {
 	@Autowired
-	private NotificationDao notificationDao;
+		private NotificationDao notificationDao;
 
-	@RequestMapping(value = "/getnotificationsnotviewed", method = RequestMethod.GET)
+	
+	@RequestMapping(value ="/getnotificationsnotviewed", method = RequestMethod.GET)
 	public ResponseEntity<?> getNotificationsNotViewed(HttpSession session) {
 		String email = (String) session.getAttribute("loginId");
 		if (email == null) {
@@ -28,7 +30,7 @@ public class NotificationController {
 		List<Notification> notificationsNotViewed = notificationDao.getAllNotificationsNotViewed(email);
 		return new ResponseEntity<List<Notification>>(notificationsNotViewed, HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/getnotification/{notificationId}", method = RequestMethod.GET)
 	public ResponseEntity<?> getNotification(HttpSession session, @PathVariable int notificationId) {
 		String email = (String) session.getAttribute("loginId");
@@ -40,7 +42,7 @@ public class NotificationController {
 		return new ResponseEntity<Notification>(notification, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/updatenotification/{notificationId}", method = RequestMethod.PUT)
+	@RequestMapping(value ="/updatenotification/{notificationId}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateNotificationViewedStatus(HttpSession session, @PathVariable int notificationId) {
 		String email = (String) session.getAttribute("loginId");
 		if (email == null) {

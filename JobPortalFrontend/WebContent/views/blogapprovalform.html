@@ -1,24 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<!-- result of the query select * from blogpost where blogpostid=? -->
-<div class="panel panel-primary">
+
+<span ng-show="user.role!='ADMIN'">You are not authorized to view the content</span>
+<div ng-show="user.role=='ADMIN'">
+<div class="panel panel-info">
 <div class="panel-heading">
-<b>Blog Title:</b>{{blog.blogTitle}}<br>
-<b>Posted On :</b> {{blog.postedOn | date:'dd-MMM-yyyy :hh:mm:ss'}}<br>
-<b>Author    :</b>{{blog.author.email}}<br>
+<img src="http://localhost:8081/project2middleware/getimage?email={{user.email}}" alt="Upload Image" height="140px" width="145px"/>
+<table class="table table-bored">
+<tr><td><b>Blog Title: </b></td><td>{{blog.blogTitle}}<br></td></tr>
+<tr><td><b>Posted On :  </b></td><td>{{blog.postedOn | date:'dd-MMMM-yyyy'}}<br></td></tr>
+<tr><td><b>Posted By : </b></td><td> {{blog.author.firstName}} &nbsp; {{blog.author.lastName}}<br></td></tr>
+<tr><td><b>Email     :   </b></td><td>{{blog.author.email}}<br></td></tr>
+</table>
 </div>
-<div class=panel-body>
+<div class="panel-body">
+<b>Content:</b><br>
+<p ng-bind-html="htmlContent">
+</p>
+<hr>
 <div>
-<p ng-bind-html="content"></p><br>
+<button class="btn btn-info" ng-click="approveBlog(blog)" ">Approve</button> &nbsp; 
+<button class="btn  btn-danger" ng-click="showRejectionTxt()">Reject</button> &nbsp;
+
+<div ">
+<br>
+<textarea rows="5" cols="50" ng-model="rejectionReason"></textarea>
 </div>
-<button class="btn btn-primary" ng-click="approveBlog(blog)">Approve</button> &nbsp; <!-- update blogpost set approved=true where blogpostid=? -->
-<button class="btn btn-danger" ng-click="rejectBlog(blog)">Reject</button> <!-- delete from blogpost where blogpostid=? -->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn  btn-danger" ng-click="rejectBlog(blog.blogId,rejectionReason)" >Confirm Reject</button>
+
 </div>
 </div>
-</body>
-</html>
+</div>
+</div>

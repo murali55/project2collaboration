@@ -54,7 +54,6 @@ catch(Exception e) {
 }
 return new ResponseEntity<Void>(HttpStatus.OK);
 }
-
 @RequestMapping(value="/blogsApproved", method=RequestMethod.GET)
 ResponseEntity<?> getBlogsApproved(HttpSession session){
     String email=(String)session.getAttribute("loginId");
@@ -66,6 +65,7 @@ ResponseEntity<?> getBlogsApproved(HttpSession session){
 	List<Blog> blogs=blogDao.getBlogsApproved();
 	return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
 }
+
 @RequestMapping(value="/blogsWaiting", method=RequestMethod.GET)
 ResponseEntity<?> getWaitingForApproval(HttpSession session){
     String email=(String)session.getAttribute("loginId");
@@ -109,10 +109,15 @@ ResponseEntity<?> getWaitingForApproval(HttpSession session){
    		}
    		blog.setApproved(true);
    		blogDao.approveBlog(blog);
-   		return new ResponseEntity<Void>(HttpStatus.OK);
+   		Notification notification=new Notification();
+	    notification.setApprovedOrRejected("Approved");
+	    notification.setBlogTitle(blog.getBlogTitle());
+    	notification.setUserToBeNotified(blog.getAuthor());//AUTHOR OF THE BLOGPOST
+		notificationDao.addNotification(notification);
+		return new ResponseEntity<Void>(HttpStatus.OK);
    }
-   @RequestMapping(value="/rejectblog",method=RequestMethod.PUT)
-   public ResponseEntity<?> rejectBlog(HttpSession session,@RequestBody Blog blog, @PathVariable String rejectionReason){
+   @RequestMapping(value="/rejectblog/{blogId}/{rejectionReason}",method=RequestMethod.PUT)
+   public ResponseEntity<?> rejectBlog(HttpSession session,@PathVariable int blogId, @PathVariable String rejectionReason){
    		String email=(String)session.getAttribute("loginId");
    		if(email==null){
    			ErrorClz errorClz=new ErrorClz(5,"Please login..");
@@ -124,6 +129,7 @@ ResponseEntity<?> getWaitingForApproval(HttpSession session){
    				new ErrorClz(7,"Access Denied.. You are not authorized to view the blogs waiting for approval");
    			return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);
    		}
+   		Blog blog=blogDao.getBlog(blogId);
    		
    Notification notification=new Notification();
    notification.setApprovedOrRejected("Rejected");

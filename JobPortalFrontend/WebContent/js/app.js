@@ -17,6 +17,11 @@ app.config(function($routeProvider){
     .when('/getblogapproved/:blogId',{controller:'BlogIndetailCtrl',templateUrl:'views/blogindetail.html'})
     .when('/home',{controller:'NotificationCtrl',templateUrl:'views/home.html'})
 	.when('/getnotification/:notificationId',{controller:'NotificationCtrl',templateUrl:'views/notificationindetail.html'})
+	.when('/uploadprofilepic',{templateUrl:'views/uploadprofilepic.html'})
+	.when('/suggestedusers',{controller:'FriendCtrl',templateUrl:'views/suggesteduserslist.html'})
+	.when('/pendingrequests',{controller:'FriendCtrl',templateUrl:'views/pendingrequests.html'})
+	.when('/listoffriends',{controller:'FriendCtrl',templateUrl:'views/friendslist.html'})
+	.when('/chat',{controller:'ChatCtrl',templateUrl:'views/chat.html'})
 	.otherwise({controller:'NotificationCtrl',templateUrl:'views/home.html'})	
 })
 app.run(function($rootScope, UserService, $location,$cookieStore){

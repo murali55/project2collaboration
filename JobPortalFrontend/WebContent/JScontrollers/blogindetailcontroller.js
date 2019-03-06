@@ -24,8 +24,8 @@ app.controller('BlogIndetailCtrl',function($scope,BlogService,$routeParams,$loca
 				   })
 	    }	
 			
-       $scope.rejectBlog=function(blog){
-    	   BlogService.rejectBlog(blog).then(
+       $scope.rejectBlog=function(blogId,rejectionReason){
+    	   BlogService.rejectBlog(blogId,rejectionReason).then(
     			   function(response){
     				   $location.path('/blogswaiting')
     			   },
