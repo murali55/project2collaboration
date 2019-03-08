@@ -1,14 +1,16 @@
-<div class="panel panel-primary">
+<link rel="stylesheet" href="css/job.css">
+<body class="panel">
+<div class= "middle">
 <div class="panel-heading">
-<b>List Of Suggested Users</b>
+<h1>List Of Suggested Users</h1>
 </div>
-<div class="panel-body">
+<div class="panel-main">
 <ul style="list-style:none;">
 <li ng-repeat="suggestedUser in suggestedUsers">
 <div class="media">
 			<div class="media-left">
 				<img
-					src="http://localhost:/JobPortalMiddleware/getimage?email={{suggestedUser.email}}"
+					src="http://localhost:8080/JobPortalMiddleware/getimage?email={{suggestedUser.email}}"
 					alt="No Image" height="60px" width="60px"><br>
 			</div>
 

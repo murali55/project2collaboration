@@ -1,28 +1,20 @@
-<div class="panel panel-primary">
+<div class="container">
+<div class="panel panel-info">
 <div class="panel-heading">
-<b>List Of Suggested Users</b>
+<h4>Pending Requests</h4>
 </div>
 <div class="panel-body">
-<ul style="list-style:none;">
-<li ng-repeat="suggestedUser in suggestedUsers">
-<div class="media">
-			<div class="media-left">
-				<img
-					src="http://localhost:9090/project2middleware/getimage?email={{suggestedUser.email}}"
-					alt="No Image" height="60px" width="60px"><br>
-			</div>
-
-<div class="media-body">
-<b>Email: </b>{{suggestedUser.email}}<br>
-<b>{{suggestedUser.firstname}} &nbsp; {{suggestedUser.lastname}}</b><br>
-</div>
-<button class="btn btn-primary" ng-click="addFriend(suggestedUser)">Add Friend</button>
-<!-- suggestedUser is a User object, this is the value for toId property in friend obj -->
-</div>
+<ul style="list-style:none">
+<li ng-repeat="pendingRequest in pendingRequests">
 <hr>
+<img src="http://localhost:8080/JobPortalMiddleware/getimage?email={{request.fromid.email}}" alt="Upload Image" height="140px" width="145px"/><br>
+<b>Email:</b>{{pendingRequest.fromId.email}}<br>
+<b>Name:</b>{{pendingRequest.fromId.firstName}}&nbsp;{{pendingRequest.fromId.lastName}}<br>
+<b>Mobile No:</b>{{pendingRequest.fromId.phoneNbr}}<br><br>
+<button class="btn btn-info" ng-click="acceptRequest(pendingRequest)">Accept Friend Request</button>
+<button class="btn btn-danger" ng-click="deleteRequest(pendingRequest)">Delete Friend Request</button>
 </li>
 </ul>
 </div>
-
 </div>
-
+</div>

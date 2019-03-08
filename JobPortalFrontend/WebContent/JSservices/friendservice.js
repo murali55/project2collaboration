@@ -3,7 +3,7 @@
  */
 app.factory('FriendService',function($http){
 	var friendService={}
-	var BASE_URL ="http://localhost:9090/project2middleware"
+	var BASE_URL ="http://localhost:8080/JobPortalMiddleware"
 	
 	friendService.getAllSuggestedUsers=function(){
 		return $http.get(BASE_URL + "/suggestedusers")
@@ -11,19 +11,19 @@ app.factory('FriendService',function($http){
 	
 	
 	friendService.addFriend=function(toId){
-		return $http.post(BASE_URL + "/addfriend",toId)
+		return $http.post(BASE_URL + "/friendrequest",toId)
 	}
 	
 	friendService.getPendingRequests=function(){
 		return $http.get(BASE_URL + "/pendingrequests")
 	}
 	
-     friendService.acceptRequest=function(pendingRequest){//pendingRequest is Friend object
-    	 return $http.put(BASE_URL + "/acceptrequest",pendingRequest)
+     friendService.acceptRequest=function(pendingRequest){
+    	 return $http.put(BASE_URL + "/acceptfriendrequest",pendingRequest)
      }
 	
      friendService.deleteRequest=function(pendingRequest){
-    	 return $http.put(BASE_URL +"/deleterequest",pendingRequest)
+    	 return $http.put(BASE_URL +"/deletefriendrequest",pendingRequest)
      }
      
      

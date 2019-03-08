@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,9 +42,9 @@ private ProfilePictureDao profilePictureDao;
 		return new ResponseEntity<ProfilePicture>(profilePicture, HttpStatus.OK);
 	}
 	@RequestMapping(value="/getimage", method=RequestMethod.GET)
-	public byte[] getProfilePicture(@RequestParam String email, HttpSession session)
+	public @ResponseBody byte[] getProfilePicture(@RequestParam String email, HttpSession session)
 	{
-		String authEmail=(String)session.getAttribute("lodinId");
+		String authEmail=(String)session.getAttribute("loginId");
 		if(authEmail==null){
     		return null;
 		}

@@ -60,14 +60,14 @@ public ResponseEntity<?> getAllSuggestedUsers(HttpSession session)
 		return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
 	}
 	@RequestMapping(value="/acceptfriendrequest",method=RequestMethod.PUT)
-	public ResponseEntity<?> acceptFriendRequest(@RequestBody Friend friend, HttpSession session)
+	public ResponseEntity<?> acceptFriendRequest(@RequestBody Friend pendingRequest, HttpSession session)
 	{
-	String email=(String)session.getAttribute("logiId");
+	String email=(String)session.getAttribute("loginId");
 	if(email==null){
 		ErrorClz errorClz=new ErrorClz(6,"Please login...");
 		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);//login.html
 	}
-	friendDao.acceptFriendRequest(friend);
+	friendDao.acceptFriendRequest(pendingRequest);
 	return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

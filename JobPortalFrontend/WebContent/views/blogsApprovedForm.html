@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="css/job.css">
 <b ng-show="user==undefined">Please login</b>
+<body class="panel">
 <div ng-show="user!=undefined">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<b>List Of Blogs Approved</b>
+<div class= "middle">
+<div class="panel-heading">
+
+			<h1>List Of Blogs Approved</h1>
 		</div>
-		<div class="panel-body">
+		<div class="panel-main">
 			<ul>
 				<li ng-repeat="blog in blogsApproved">
 					<!-- approved value as true --> 
