@@ -37,6 +37,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 		
 	}
 
+	
 	public boolean configureMessageConverters(List<MessageConverter> arg0) {
 		// TODO Auto-generated method stub
 		return true;

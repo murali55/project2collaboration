@@ -3,6 +3,7 @@
  */
 app.controller('BlogIndetailCtrl',function($scope,BlogService,$routeParams,$location,$sce){
 	var blogId=$routeParams.blogId 
+	$scope.isRejected= false
 	BlogService.getBlog(blogId).then(
 			function(response){
 				$scope.blog=response.data 

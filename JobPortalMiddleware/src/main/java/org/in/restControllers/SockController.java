@@ -1,6 +1,8 @@
 package org.in.restControllers;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.in.persistanceClzs.Chat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -8,6 +10,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
+
 
 @Controller
 public class SockController {

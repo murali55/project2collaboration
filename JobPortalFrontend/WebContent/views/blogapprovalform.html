@@ -3,7 +3,7 @@
 <div ng-show="user.role=='ADMIN'">
 <div class="panel panel-info">
 <div class="panel-heading">
-<img src="http://localhost:8081/project2middleware/getimage?email={{user.email}}" alt="Upload Image" height="140px" width="145px"/>
+<img src="http://localhost:8080/JobPortalMiddleware/getimage?email={{blog.author.email}}" alt="Upload Image" height="140px" width="145px"/>
 <table class="table table-bored">
 <tr><td><b>Blog Title: </b></td><td>{{blog.blogTitle}}<br></td></tr>
 <tr><td><b>Posted On :  </b></td><td>{{blog.postedOn | date:'dd-MMMM-yyyy'}}<br></td></tr>
@@ -17,15 +17,15 @@
 </p>
 <hr>
 <div>
-<button class="btn btn-info" ng-click="approveBlog(blog)" ">Approve</button> &nbsp; 
+<button class="btn btn-info" ng-click="approveBlog(blog)" ng-hide="isRejected">Approve</button> &nbsp; 
 <button class="btn  btn-danger" ng-click="showRejectionTxt()">Reject</button> &nbsp;
 
-<div ">
+<div  ng-show="isRejected">
 <br>
 <textarea rows="5" cols="50" ng-model="rejectionReason"></textarea>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button class="btn  btn-danger" ng-click="rejectBlog(blog.blogId,rejectionReason)" >Confirm Reject</button>
+<button class="btn  btn-danger" ng-click="rejectBlog(blog.blogId,rejectionReason)" ng-show="isRejected" >Confirm Reject</button>
 
 </div>
 </div>

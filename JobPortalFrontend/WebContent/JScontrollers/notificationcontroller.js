@@ -11,7 +11,7 @@ app.controller('NotificationCtrl',function($scope,$rootScope,NotificationService
 			},
 			function(response){
 				if(response.status==401)
-					$location.path('/login')
+					$location.path('/userlogin')
 			})
 	}
 	getNotificationsNotViewed()
@@ -23,7 +23,7 @@ app.controller('NotificationCtrl',function($scope,$rootScope,NotificationService
     			},
     			function(response){
     				if(response.status==401)
-    					$location.path('/login')
+    					$location.path('/userlogin')
     			})
     			
     	NotificationService.updateNotification($routeParams.notificationId).then(
@@ -33,7 +33,7 @@ app.controller('NotificationCtrl',function($scope,$rootScope,NotificationService
     			},
     			function(response){
     				if(response.status==401)
-    					$location.path('/login')
+    					$location.path('/userlogin')
     			})
     }
 })

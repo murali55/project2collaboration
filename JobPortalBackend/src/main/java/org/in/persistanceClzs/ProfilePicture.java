@@ -6,12 +6,12 @@ import javax.persistence.Lob;
 import javax.transaction.Transactional;
 
 @Entity
-@Transactional
 public class ProfilePicture {
 	@Id
 	private String email;
 		@Lob
 	private byte[] image;
+		
 	public String getEmail() {
 		return email;
 	}

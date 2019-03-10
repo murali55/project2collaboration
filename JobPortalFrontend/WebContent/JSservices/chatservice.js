@@ -1,3 +1,6 @@
+/**
+ * ChatService
+ */
 app.filter('reverse', function() {
 	  return function(items) {
 	    return items.slice().reverse();
@@ -11,8 +14,6 @@ app.filter('reverse', function() {
 	    });
 	  };
 	});
-
-
 app.factory('ChatService',function($rootScope){
 	var socket=new SockJS("/JobPortalMiddleware/chatmodule")
 	var stompClient=Stomp.over(socket)
@@ -25,4 +26,3 @@ app.factory('ChatService',function($rootScope){
 		stompClient:stompClient//Websocket connection over Stomp protocol
 	}
 })
-

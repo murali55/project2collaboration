@@ -1,4 +1,5 @@
 package org.in.restControllers;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
@@ -9,12 +10,14 @@ import org.in.persistanceClzs.ProfilePicture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @RestController
 public class ProfilePictureController {
@@ -25,8 +28,8 @@ private ProfilePictureDao profilePictureDao;
 	{
 		String email=(String)session.getAttribute("loginId");
 		if(email==null){
-			ErrorClz errorClz=new ErrorClz(6,"Please login...");
-    		return new ResponseEntity<ErrorClz>(errorClz,HttpStatus.UNAUTHORIZED);//login.html
+			ErrorClz errorClazz=new ErrorClz(6,"Please login...");
+    		return new ResponseEntity<ErrorClz>(errorClazz,HttpStatus.UNAUTHORIZED);//login.html
 		}
 		ProfilePicture profilePicture=new ProfilePicture();
 		profilePicture.setEmail(email);
@@ -42,7 +45,7 @@ private ProfilePictureDao profilePictureDao;
 		return new ResponseEntity<ProfilePicture>(profilePicture, HttpStatus.OK);
 	}
 	@RequestMapping(value="/getimage", method=RequestMethod.GET)
-	public @ResponseBody byte[] getProfilePicture(@RequestParam String email, HttpSession session)
+	public byte[] getProfilePicture(@RequestParam String email, HttpSession session)
 	{
 		String authEmail=(String)session.getAttribute("loginId");
 		if(authEmail==null){
@@ -54,5 +57,4 @@ private ProfilePictureDao profilePictureDao;
 		else
 			return profilePicture.getImage();
 	}
-	
 }

@@ -5,6 +5,7 @@
 	 $scope.userRegistration= function(user){
 		 UserService.userRegistration(user).then(
 		                      function(response){
+		                    	  $scope.msg="Registration sucessful.. please LOGIN"
 		                    	$location.path('/userLogin')  
 		                      },
 		                      
